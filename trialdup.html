@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesdup.css">
+    <title>CLAVERTAB - Hostel Details</title>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="indexdup.html">CLAVERTAB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="indexdup.html">Home</a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hostel Details Section -->
+    <section class="hostel-details-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img id="hostelImage" src="" alt="Hostel Image" class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <h2 id="hostelName"></h2>
+                    <p id="hostelLocation"></p>
+                    <p id="hostelDescription"></p>
+                    <p id="hostelPrice"></p>
+                    <p id="hostelAmenities"></p>
+                    <a href="hostelsdup.html"><button class="book-button"> Back To Hostels  </button></a>
+                </div>
+            </div>
+            <!-- Facilities and Contact Section -->
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <h3>Facilities</h3>
+                    <ul id="hostelFacilities">
+                        <li>CCTV Cameras</li>
+                        <li>Fire Extinguisher</li>
+                        <li>Cleaners</li>
+                        <li>TV Room</li>
+                        <li>Study Room</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"> <strong>Contact Porter/Manager</strong></h5>
+                            <p class="card-text" id="contactDetails">0243697949</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
+            
+            <div class="row">
+                <ul>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            
+            <div class="row">
+                CLAVERTAB Copyright © 2024  
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Parse URL parameters
+        function getParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                name: urlParams.get('name'),
+                location: urlParams.get('location'),
+                image: urlParams.get('image'),
+                description: urlParams.get('description'),
+                price: urlParams.get('price'),
+                amenities: urlParams.get('amenities'),
+                contact: urlParams.get('contact')
+            };
+        }
+    
+        function displayHostelDetails() {
+            const { name, location, image, description, price, amenities, contact } = getParams();
+    
+            document.getElementById('hostelName').textContent = name;
+            document.getElementById('hostelLocation').textContent = location;
+            document.getElementById('hostelImage').src = image;
+            document.getElementById('hostelDescription').textContent = description;
+            document.getElementById('hostelPrice').innerHTML = price.replace(/\n/g, '<br>');
+            document.getElementById('hostelAmenities').textContent = amenities;
+            document.getElementById('contactDetails').textContent = contact;
+        }
+    
+        // Call the function to display details on page load
+        window.onload = displayHostelDetails;
+    </script>
+    
+</body>
+</html>
